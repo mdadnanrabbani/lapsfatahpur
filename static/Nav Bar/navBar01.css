@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Frijole&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary: #1976D2;
+    --secondary: #FFC107;
+    --accent: #4CAF50;
+    --text: #333333;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background: var(--white);
+}
+
+nav {
+    background-color: var(--primary);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: "Frijole", system-ui;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--secondary);
+}
+
+.contact-btn {
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+    display: inline-block;
+    border-bottom: ridge;
+}
+
+.contact-btn:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    transition: 0.3s ease;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary);
+    padding: 10px 0;
+}
+
+.mobile-menu a {
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+.mobile-contact {
+    margin: 10px;
+    background-color: var(--accent);
+    text-align: center;
+    width: max-content;
+}
+
+.mobile-contact:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu, .desktop-contact {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .mobile-menu.show {
+        display: flex;
+    }
+}

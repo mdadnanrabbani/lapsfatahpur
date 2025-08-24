@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ notice.subject }} | LAPS Notice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Components/detailed-notice.css'%}">
+</head>
+<body>
+  <div class="notice-container">
+
+    <!-- Header with Letterhead -->
+    <header class="notice-header">
+      <div class="logo-left">
+        <img src="{% static 'imgs/lapslogo.png'%}" alt="LAPS Logo">
+      </div>
+      <div class="school-info">
+        <h1> <b>Little Angels Public School</b></h1>
+        <p>Fatahpur & Bhutahi, Sitamarhi, Bihar - 843317 </p>
+        <p>Email: lapsfatahpur@gmail.com | Phone: +91 91997 7830</p>
+      </div>
+      <div class="logo-right">
+        <img src="{% static 'imgs/sawatchlogo.png' %}" alt="Swatch Bharat">
+      </div>
+    </header>
+
+    <div class="notice-meta">
+      <p><strong>Notice No:</strong> {{ notice.id }}</p>
+      <p><strong>Date:</strong> {{ notice.created_at|date:"d M Y" }}</p>
+    </div>
+
+    <!-- Subject -->
+    <h2 class="notice-subject">Subject: <span>{{ notice.subject }}</span></h2>
+
+    <!-- Content -->
+    <div class="notice-content">
+      {{ notice.content|safe }}
+    </div>
+
+    <!-- To & Copy -->
+    <div class="notice-lists">
+      <div class="to-list">
+        <h3>To:</h3>
+        <p>{{ notice.to_list }}</p>
+      </div>
+      <div class="copy-list">
+        <h3>Copy for Information to:</h3>
+        <p>{{ notice.copy_list }}</p>
+      </div>
+    </div>
+
+    <!-- Signature -->
+    <div class="notice-signature">
+      <img src="{% static 'imgs/signature.png' %}" alt="Computer Generated Notice, No Signature Required" class="sign-img">
+      <p style="margin-top: -26px">__________________________</p>
+      <p><strong>Director / Principal</strong></p>
+
+    </div>
+  </div>
+</body>
+</html>

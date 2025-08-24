@@ -1,0 +1,44 @@
+
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAPS</title>
+<link rel="stylesheet" href="{% static 'Nav Bar/navBar01.css'%}">
+
+</head>
+<body>
+
+<nav>
+    <div class="logo">LAPS</div>
+    <div class="menu">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/academics">Academics</a>
+        <a href="/admissions">Admissions</a>
+        <a href="/campuslife">Gallery</a>
+        <a href="/contactus">Contact</a>
+    </div>
+    <a href="/dashboard" class="contact-btn desktop-contact">Student's ERP</a>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/academics">Academics</a>
+    <a href="/admissions">Admissions</a>
+    <a href="/campuslife">Gallery</a>
+    <a href="/contactus">Contact</a>
+    <a href="/dashboard" class="contact-btn mobile-contact">Student's ERP </a>
+</div>
+
+<script src="{% static 'Nav Bar/navBar01.js'%}"></script>
+</body>
+</html>

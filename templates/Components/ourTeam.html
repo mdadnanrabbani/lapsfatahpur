@@ -1,0 +1,127 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'Components/ourTeam.css' %}">
+    <script defer src="{% static 'Components/ourTeam.js' %}"></script>
+    <title>Our Team</title>
+</head>
+<body>
+<section class="team-section">
+  <h2 class="section-title">Our <span>Team</span></h2>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-img">
+        <img src="{% static 'imgs/demmy.png' %}" alt="Founder">
+      </div>
+      <h3>Mr. Khursheed Alam Khan</h3>
+      <p>Founder</p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-img">
+        <img src="{% static 'imgs/demmy.png' %}" alt="Co-Founder">
+      </div>
+      <h3>Mr. Amir Azam Khan</h3>
+      <p>Co - Founder and Director</p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-img">
+        <img src="{% static 'imgs/demmy.png' %}" alt="Principal">
+      </div>
+      <h3>Mr. Nandlal</h3>
+      <p>Principal</p>
+    </div>
+  </div>
+</section>
+
+<section class="teachers-section">
+  <h2 class="section-title">Our <span>Teachers</span></h2>
+
+  <div class="carousel">
+    <button class="prev">&#10094;</button>
+    <div class="carousel-track">
+
+      <!-- Teacher 1 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Mohammad Adnan Rabbani</h4>
+        <p>English Teacher</p>
+      </div>
+
+      <!-- Teacher 2 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>John Doe</h4>
+        <p>Mathematics Teacher</p>
+      </div>
+
+      <!-- Teacher 3 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Jane Smith</h4>
+        <p>Science Teacher</p>
+      </div>
+
+      <!-- Teacher 4 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Rahul Sharma</h4>
+        <p>Computer Teacher</p>
+      </div>
+
+      <!-- Teacher 5 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Anita Verma</h4>
+        <p>Hindi Teacher</p>
+      </div>
+
+      <!-- Teacher 6 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Sunil Kumar</h4>
+        <p>Social Studies Teacher</p>
+      </div>
+
+      <!-- Teacher 7 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Fatima Khan</h4>
+        <p>Arts Teacher</p>
+      </div>
+
+      <!-- Teacher 8 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>David Williams</h4>
+        <p>Sports Teacher</p>
+      </div>
+
+      <!-- Teacher 9 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Priya Singh</h4>
+        <p>Biology Teacher</p>
+      </div>
+
+      <!-- Teacher 10 -->
+      <div class="teacher-card">
+        <img src="{% static 'imgs/adnan.png' %}" alt="Teacher">
+        <h4>Amit Patel</h4>
+        <p>Chemistry Teacher</p>
+      </div>
+
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+</body>
+</html>

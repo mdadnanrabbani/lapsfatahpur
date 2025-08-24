@@ -1,0 +1,125 @@
+root {
+  --primary: #1976D2;
+  --secondary: #FFC107;
+  --accent: #4CAF50;
+  --text: #333333;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.notice-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.notice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--primary);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.notice-header img {
+  width: 90px;
+  height: auto;
+}
+
+.school-info {
+  text-align: center;
+}
+
+.school-info h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--primary);
+}
+
+.school-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* Meta info */
+.notice-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+
+/* Subject */
+.notice-subject {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  color: var(--text);
+}
+
+.notice-subject span {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Content */
+.notice-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+/* Lists */
+.notice-lists {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+  gap: 20px;
+}
+
+.notice-lists h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.notice-lists p {
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, var(--secondary)20%, var(--accent)80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+}
+
+/* Signature */
+.notice-signature {
+  text-align: right;
+  margin-top: 40px;
+}
+
+.notice-signature .sign-img {
+  width: 219px;
+  margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notice-header {
+    flex-direction: row;
+    text-align: center;
+  }
+  .notice-lists {
+    flex-direction: column;
+    text-align: left;
+  }
+}

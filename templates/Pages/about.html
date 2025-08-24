@@ -1,0 +1,463 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Little Angels Public School</title>
+  <!-- Google Font: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- NOTE for Django project structure:
+       If you prefer separate files, move the CSS between <style>...</style>
+       into `static/laps/css/about.css` and the JS into `static/laps/js/about.js`,
+       then replace the inline blocks with:
+       <link rel="stylesheet" href="{% static 'laps/css/about.css' %}">
+       <script defer src="{% static 'laps/js/about.js' %}"></script>
+  -->
+
+  <style>
+    :root{
+      --primary:#1976D2; /* Blue */
+      --secondary:#FFC107; /* Amber */
+      --accent:#4CAF50; /* Green */
+      --bg:#FFFFFF; /* White */
+      --ink:#333333; /* Dark gray */
+
+      /* Subtle tints for gradients (derived from allowed palette only) */
+      --primary-10: rgba(25,118,210,0.10);
+      --primary-20: rgba(25,118,210,0.20);
+      --secondary-20: rgba(255,193,7,0.20);
+      --accent-20: rgba(76,175,80,0.20);
+      --glass-bg: rgba(255,255,255,0.55);
+      --glass-brd: rgba(25,118,210,0.25);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius-2xl: 1.25rem;
+      --radius-xl: 1rem;
+      --radius-lg: .75rem;
+      --radius-md: .5rem;
+      --space-xl: clamp(2.5rem, 4vw, 4rem);
+      --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+      --space-md: clamp(1rem, 2vw, 1.5rem);
+      --space-sm: .75rem;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    /* Utility */
+    .container{width:min(1160px, 92%);margin-inline:auto}
+    .grid{display:grid;gap:1.25rem}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.1rem;border-radius:var(--radius-lg);border:1px solid transparent;font-weight:600;text-decoration:none}
+    .btn:focus{outline:2px solid var(--primary);outline-offset:3px}
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{filter:brightness(0.95)}
+    .btn-ghost{background:transparent;border-color:var(--primary);color:var(--primary)}
+    .btn-ghost:hover{background:var(--primary-10)}
+
+    .section{padding:var(--space-xl) 0}
+    .section-title{font-size:clamp(1.6rem, 2.6vw, 2.4rem);margin:0 0 .75rem;font-weight:800;letter-spacing:.2px}
+    .section-sub{margin:0 0 var(--space-lg);color:#444;font-weight:500}
+    .primary{color:var(--primary)}
+    .highlight{color:var(--primary)}
+
+    /* Glassmorphism card */
+    .glass{
+      background:var(--glass-bg);
+      backdrop-filter:saturate(140%) blur(10px);
+      border:1px solid var(--glass-brd);
+      border-radius:var(--radius-2xl);
+      box-shadow:var(--shadow);
+    }
+
+    /* Hero / Intro */
+    .hero{position:relative;overflow:clip}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,var(--secondary-20),var(--primary-20));padding:.4rem .75rem;border-radius:999px;border:1px solid var(--glass-brd);font-weight:600}
+    .hero h1{font-size:clamp(2rem, 4.2vw, 3.25rem);line-height:1.15;margin:.6rem 0 1rem;font-weight:800}
+    .hero p{font-size:clamp(1rem, 1.2vw, 1.125rem);margin:0 0 1.25rem}
+    .hero-cta{display:flex;gap:.85rem;flex-wrap:wrap}
+    .hero-figure{position:relative}
+    .hero-art{aspect-ratio:4/3;border-radius:var(--radius-2xl);overflow:hidden}
+    .hero-art > img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-ring{position:absolute;inset:auto -16% -18% auto;width:58%;height:58%;border-radius:999px;background:radial-gradient(circle at 20% 20%, var(--accent-20), transparent 55%), radial-gradient(circle at 80% 60%, var(--secondary-20), transparent 60%);filter:blur(20px)}
+
+    /* Vision & Mission */
+    .vm-grid{grid-template-columns:repeat(2,1fr)}
+    .vm-card{position:relative;padding:1.25rem}
+    .vm-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,var(--primary),transparent),linear-gradient(45deg,var(--secondary),transparent);-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+    .vm-card h3{margin:.3rem 0 .5rem;font-size:1.25rem}
+
+    /* Core Values */
+    .values-grid{grid-template-columns:repeat(3,1fr)}
+    .value-card{padding:1rem;transition:transform .35s ease}
+    .value-card:hover{transform:translateY(-4px)}
+    .chip{display:inline-block;font-weight:700;font-size:.9rem;padding:.35rem .6rem;border-radius:999px;background:linear-gradient(120deg,var(--primary-10),var(--secondary-20));border:1px solid var(--glass-brd)}
+
+    /* History Timeline */
+    .timeline{position:relative}
+    .timeline::before{content:"";position:absolute;left:calc(50% - 2px);top:0;bottom:0;width:4px;background:linear-gradient(var(--primary),var(--accent))}
+    .t-item{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin:2rem 0}
+    .t-card{padding:1rem}
+    .t-year{font-weight:800;font-size:1.5rem;color:var(--primary)}
+
+    /* Infrastructure & Facilities */
+    .scroll-row{display:flex;gap:1rem;overflow:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory}
+    .facility{flex:0 0 320px;scroll-snap-align:start}
+    .facility .thumb{aspect-ratio:16/10;border-radius:var(--radius-xl);overflow:hidden}
+    .facility .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Academics & Curriculum (tabs) */
+    .tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+    .tab-btn{cursor:pointer}
+    .tab-btn[aria-selected="true"]{background:var(--primary);color:#fff}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+
+    /* Achievements */
+    .ach-grid{grid-template-columns:repeat(4,1fr)}
+    .ach-card{padding:1.25rem;text-align:center}
+    .ach-num{font-size:2rem;font-weight:800;color:var(--primary)}
+
+    /* Leadership & Faculty */
+    .team-grid{grid-template-columns:repeat(4,1fr)}
+    .person{padding:1rem;text-align:center}
+    .avatar{width:100%;aspect-ratio:3/4;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:.75rem}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .role{font-weight:700;color:var(--primary)}
+
+    /* Footer CTA */
+    .cta{display:grid;grid-template-columns:2.2fr 1fr;gap:1.25rem;align-items:center}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero-wrap{grid-template-columns:1fr}
+      .vm-grid{grid-template-columns:1fr}
+      .values-grid{grid-template-columns:repeat(2,1fr)}
+      .ach-grid{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .cta{grid-template-columns:1fr}
+      .timeline::before{left:0;width:3px}
+      .t-item{grid-template-columns:1fr;gap:1rem}
+    }
+    @media (max-width:768px){
+      .values-grid{grid-template-columns:1fr}
+      .ach-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
+      .btn{padding:.7rem .9rem}
+      .section{padding:2rem 0}
+    }
+  </style>
+</head>
+<body>
+ {% include "Nav Bar/navbar01.html" %}
+
+  <header class="section hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="hero-badge">Little Angels Public School • Fatahpur</div>
+        <h1 class="title" data-title> About <span class="highlight"> Us </span></h1>
+        <p>Welcome to Little Angels Public School (LAPS), where curiosity meets character. We nurture every learner to become confident, compassionate, and future-ready citizens under the CBSE framework.</p>
+        <div class="hero-cta">
+          <a href="#vision" class="btn btn-primary">Explore Vision</a>
+          <a href="#infrastructure" class="btn btn-ghost">Our Campus</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <div class="hero-art glass reveal">
+          <!-- Replace with your real campus image in Django: {% static 'laps/img/campus-hero.jpg' %} -->
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop" alt="LAPS campus" loading="eager">
+        </div>
+        <div class="hero-ring" aria-hidden="true"></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="welcome" class="section">
+    <div class="container grid" style="grid-template-columns:1.2fr .8fr;align-items:center;gap:2rem">
+      <div class="reveal">
+        <h2 class="section-title" data-title>Introduction / Welcome <span>Note</span></h2>
+        <p class="section-sub">At LAPS, we believe in a holistic education that balances academic excellence with values and life skills. Our modern pedagogy, dedicated faculty, and inclusive environment ensure that every child thrives.</p>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="glass vm-card">
+            <h3>CBSE Aligned</h3>
+            <p>Structured curriculum with continuous assessment and competency-based learning.</p>
+          </div>
+          <div class="glass vm-card">
+            <h3>Safe & Caring</h3>
+            <p>Child-centric policies, secure campus, and a culture of respect and empathy.</p>
+          </div>
+          <div class="glass vm-card">
+            <h3>Future-ready</h3>
+            <p>STEM, arts, sports, and digital literacy woven into everyday learning.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="glass" style="padding:1rem">
+          <div class="avatar" style="aspect-ratio:1/1;border-radius:999px;max-width:260px;margin:0 auto">
+            <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" alt="Principal" loading="lazy">
+          </div>
+          <div style="text-align:center;margin-top:.75rem">
+            <div class="role">Principal’s Welcome</div>
+            <p style="margin:.4rem 0 .8rem">“Every child is unique. We engage minds and ignite hearts to create lifelong learners.”</p>
+            <a href="#leadership" class="btn btn-ghost">Meet Leadership</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision" class="section" aria-labelledby="vision-title">
+    <div class="container">
+      <h2 class="section-title" id="vision-title" data-title>Vision & <span>Mission</span></h2>
+      <p class="section-sub">Our guiding statements shape everything we do — from classroom practices to community engagement.</p>
+      <div class="grid vm-grid">
+        <article class="glass vm-card reveal">
+          <h3>Our Vision</h3>
+          <p>To be a vibrant learning community that empowers students to excel academically, grow ethically, and lead meaningfully in a changing world.</p>
+        </article>
+        <article class="glass vm-card reveal">
+          <h3>Our Mission</h3>
+          <p>To provide a safe, inclusive, and stimulating environment that nurtures curiosity, creativity, collaboration, and character — aligned with CBSE’s learner-centric approach.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="values" class="section" aria-labelledby="values-title">
+    <div class="container">
+      <h2 class="section-title" id="values-title" data-title>Core Values & <span>Philosophy</span></h2>
+      <div class="grid values-grid">
+        <div class="glass value-card reveal">
+          <span class="chip">Integrity</span>
+          <p>We act with honesty and fairness, celebrating transparency in all actions.</p>
+        </div>
+        <div class="glass value-card reveal">
+          <span class="chip">Respect</span>
+          <p>We value diverse voices and cultivate empathy, kindness, and mutual trust.</p>
+        </div>
+        <div class="glass value-card reveal">
+          <span class="chip">Excellence</span>
+          <p>Pursuing high standards in academics, sports, arts, and co‑curriculars.</p>
+        </div>
+        <div class="glass value-card reveal">
+          <span class="chip">Curiosity</span>
+          <p>Inquiry-based learning that sparks discovery and problem-solving.</p>
+        </div>
+        <div class="glass value-card reveal">
+          <span class="chip">Collaboration</span>
+          <p>We learn as a community — students, teachers, and parents together.</p>
+        </div>
+        <div class="glass value-card reveal">
+          <span class="chip">Responsibility</span>
+          <p>We build responsible citizens with strong ethics and social awareness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" class="section" aria-labelledby="history-title">
+    <div class="container">
+      <h2 class="section-title" id="history-title" data-title>History of the <span>School</span></h2>
+      <div class="timeline">
+        <div class="t-item reveal">
+          <div class="t-card glass"><div class="t-year">2005</div><p>LAPS founded with a vision to offer quality CBSE education in Fatahpur.</p></div>
+          <div class="t-card glass"><p>Inaugural batch welcomed into a humble yet spirited campus.</p></div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-card glass"><div class="t-year">2012</div><p>New academic block and science labs established.</p></div>
+          <div class="t-card glass"><p>Integration of ICT tools into classrooms; digital smart boards introduced.</p></div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-card glass"><div class="t-year">2018</div><p>Sports complex and library expansion completed.</p></div>
+          <div class="t-card glass"><p>Clubs launched for robotics, arts, and community projects.</p></div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-card glass"><div class="t-year">2024</div><p>Campus modernization and blended learning initiatives rolled out.</p></div>
+          <div class="t-card glass"><p>Parent engagement app and ERP adopted for seamless communication.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="infrastructure" class="section" aria-labelledby="infra-title">
+    <div class="container">
+      <h2 class="section-title" id="infra-title" data-title>Infrastructure & <span>Facilities</span></h2>
+      <p class="section-sub">A safe, tech-enabled, and student-friendly campus designed to inspire learning.</p>
+      <div class="scroll-row">
+        <!-- Replace images with static paths in Django -->
+        <article class="glass facility reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1596496181848-3811d3b5b9f9?q=80&w=1200&auto=format&fit=crop" alt="Smart Classrooms"></div>
+          <h3>Smart Classrooms</h3>
+          <p>Interactive panels, projectors, and high-speed internet.</p>
+        </article>
+        <article class="glass facility reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1509221963643-6c62a1eae5f1?q=80&w=1200&auto=format&fit=crop" alt="Science Labs"></div>
+          <h3>Science Labs</h3>
+          <p>Well-equipped Physics, Chemistry, and Biology labs.</p>
+        </article>
+        <article class="glass facility reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Computer Lab"></div>
+          <h3>Computer Lab</h3>
+          <p>Hands-on coding, robotics, and digital literacy programs.</p>
+        </article>
+        <article class="glass facility reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0ea?q=80&w=1200&auto=format&fit=crop" alt="Library"></div>
+          <h3>Library</h3>
+          <p>Diverse collection with reading corners and research zones.</p>
+        </article>
+        <article class="glass facility reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Sports"></div>
+          <h3>Sports</h3>
+          <p>Playfields, indoor courts, and fitness programs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="academics" class="section" aria-labelledby="academics-title">
+    <div class="container">
+      <h2 class="section-title" id="academics-title" data-title>Academics & Curriculum <span>CBSE</span></h2>
+      <div class="tabs" role="tablist" aria-label="Curriculum tabs">
+        <button class="btn btn-ghost tab-btn" role="tab" aria-selected="true" aria-controls="panel-primary" id="tab-primary">Primary</button>
+        <button class="btn btn-ghost tab-btn" role="tab" aria-selected="false" aria-controls="panel-middle" id="tab-middle">Middle</button>
+        <button class="btn btn-ghost tab-btn" role="tab" aria-selected="false" aria-controls="panel-secondary" id="tab-secondary">Secondary</button>
+      </div>
+      <div id="panel-primary" class="tab-panel active glass reveal" role="tabpanel" aria-labelledby="tab-primary" tabindex="0" style="padding:1rem">
+        <p>Foundational literacy & numeracy, experiential learning, and activity-based pedagogy with a focus on communication and socio-emotional growth.</p>
+      </div>
+      <div id="panel-middle" class="tab-panel glass reveal" role="tabpanel" aria-labelledby="tab-middle" tabindex="0" style="padding:1rem">
+        <p>Integrated STEM projects, language enrichment, art-integrated learning, and formative assessments aligned with CBSE competencies.</p>
+      </div>
+      <div id="panel-secondary" class="tab-panel glass reveal" role="tabpanel" aria-labelledby="tab-secondary" tabindex="0" style="padding:1rem">
+        <p>Board-aligned preparation, career guidance, Olympiad clubs, and research-based projects developing higher-order thinking skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="section" aria-labelledby="ach-title">
+    <div class="container">
+      <h2 class="section-title" id="ach-title" data-title>Achievements & <span>Recognition</span></h2>
+      <div class="grid ach-grid">
+        <div class="glass ach-card reveal"><div class="ach-num" data-count="100">0+</div><p>Board Toppers</p></div>
+        <div class="glass ach-card reveal"><div class="ach-num" data-count="50">0+</div><p>Olympiad Medals</p></div>
+        <div class="glass ach-card reveal"><div class="ach-num" data-count="30">0+</div><p>Sports Laurels</p></div>
+        <div class="glass ach-card reveal"><div class="ach-num" data-count="25">0+</div><p>Inter-school Awards</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership" class="section" aria-labelledby="team-title">
+    <div class="container">
+      <h2 class="section-title" id="team-title" data-title>Leadership & <span>Faculty</span></h2>
+      <p class="section-sub">Experienced educators and mentors committed to student success.</p>
+      <div class="grid team-grid">
+        <!-- Replace images with static assets in Django -->
+        <article class="glass person reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200&auto=format&fit=crop" alt="Principal"></div>
+          <h3>Dr. A. Sharma</h3>
+          <div class="role">Principal</div>
+        </article>
+        <article class="glass person reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="Vice Principal"></div>
+          <h3>Ms. R. Verma</h3>
+          <div class="role">Vice Principal</div>
+        </article>
+        <article class="glass person reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200&auto=format&fit=crop" alt="HOD Science"></div>
+          <h3>Mr. V. Kumar</h3>
+          <div class="role">HOD – Science</div>
+        </article>
+        <article class="glass person reveal">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop" alt="HOD Humanities"></div>
+          <h3>Mrs. S. Khan</h3>
+          <div class="role">HOD – Humanities</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="section">
+    <div class="container glass cta reveal" style="padding:1.25rem">
+      <div>
+        <h3 style="margin:.2rem 0 0;font-size:clamp(1.25rem,2vw,1.6rem);font-weight:800">Join the LAPS <span class="primary">Family</span></h3>
+        <p style="margin:.5rem 0 0.75rem">Schedule a campus tour or speak with our admissions team to learn more.</p>
+      </div>
+      <div style="display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap">
+        <a href="/admissions" class="btn btn-primary">Admissions</a>
+        <a href="/contact" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section" style="padding-top:0">
+    <div class="container" style="border-top:1px solid var(--primary-10);padding-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <small>© <span id="y"></span> Little Angels Public School, Fatahpur • All rights reserved.</small>
+      <small>Built with❤️ • LAPS</small>
+    </div>
+  </footer>
+
+  <script>
+    // Auto-color the last word of each title (keeps requirement: last word in primary)
+    function colorLastWord(el){
+      const html = el.innerHTML.trim();
+      const match = html.match(/^(.*)\s+(\S+)<\/span>?$/); // if already has a span from markup
+      if(match){
+        // Already contains a trailing span; ensure it has highlight class
+        el.innerHTML = match[1] + ' <span class="highlight">' + match[2] + '</span>';
+        return;
+      }
+      const parts = html.split(/\s+/);
+      if(parts.length>1){
+        const last = parts.pop();
+        el.innerHTML = parts.join(' ') + ' <span class="highlight">' + last + '</span>';
+      }
+    }
+
+    document.querySelectorAll('[data-title]').forEach(colorLastWord);
+
+    // IntersectionObserver for reveal-on-scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Simple number counter for achievements
+    function animateCount(el){
+      const goal = parseInt(el.getAttribute('data-count'),10)||0;
+      let n=0; const step=Math.ceil(goal/60);
+      const t=setInterval(()=>{n+=step;if(n>=goal){n=goal;clearInterval(t)};el.textContent=n+"+";},16);
+    }
+    document.querySelectorAll('.ach-num').forEach(animateCount);
+
+    // Tabs behavior (Academics)
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        tabs.forEach(b=>b.setAttribute('aria-selected','false'));
+        btn.setAttribute('aria-selected','true');
+        document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        panel.classList.add('active');
+      });
+    });
+
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

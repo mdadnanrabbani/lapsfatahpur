@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write Notice | LAPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Components/writenotice.css'%}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- ✅ CKEditor 5 Classic build (no API key required) -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+      <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <section class="notice-wrapper">
+    <header class="notice-header">
+      <h1>Write <span>Notice</span></h1>
+      <p>Fill in the details below to publish a new notice.</p>
+    </header>
+
+    <form class="notice-form" method="POST" action="writenotice">
+      {% csrf_token %}
+
+      <!-- Subject -->
+      <div class="form-group">
+        <label for="subject"><i class="fas fa-heading"></i> Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter notice subject" required>
+      </div>
+
+      <!-- Content -->
+      <div class="form-group">
+        <label for="content"><i class="fas fa-align-left"></i> Content</label>
+        <textarea id="content" name="content"></textarea>
+      </div>
+
+      <!-- To -->
+      <div class="form-group">
+        <label><i class="fas fa-user-check"></i> To:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="to_list" value="All Students"> All Students</label>
+          <label><input type="checkbox" name="to_list" value="All Parents"> All Parents</label>
+          <label><input type="checkbox" name="to_list" value="All Teachers"> All Teachers</label>
+          <label><input type="checkbox" name="to_list" value="Principal"> Principal</label>
+          <label><input type="checkbox" name="to_list" value="Director"> Director</label>
+          <label><input type="checkbox" name="to_list" value="Guard File"> Guard File</label>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="form-group">
+        <label><i class="fas fa-copy"></i> Copy for Information to:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="copy_list" value="All Students"> All Students</label>
+          <label><input type="checkbox" name="copy_list" value="All Parents"> All Parents</label>
+          <label><input type="checkbox" name="copy_list" value="All Teachers"> All Teachers</label>
+          <label><input type="checkbox" name="copy_list" value="Principal"> Principal</label>
+          <label><input type="checkbox" name="copy_list" value="Director"> Director</label>
+          <label><input type="checkbox" name="copy_list" value="Guard File"> Guard File</label>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-action">
+        <button type="submit"><i class="fas fa-paper-plane"></i> Submit Notice</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ✅ CKEditor Initialization -->
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#content'), {
+        toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', '|', 'bulletedList', 'numberedList', '|', 'link', 'blockQuote']
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if success and notice %}
+<script>
+Swal.fire({
+    title: 'Notice Published!',
+    text: 'Congrats! Your notice has been published successfully.',
+    icon: 'success',
+    confirmButtonText: 'View Notice',
+    confirmButtonColor: '#1976D2',
+}).then(() => {
+    window.location.href = "{% url 'notice_detail' notice.id %}";
+});
+</script>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+{% load static%}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{%static 'Components/facebookFeed.css'%}">
+     <!-- Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <title>Facebook Feed</title>
+</head>
+<body>
+<section class="laps-news">
+  <h2 class="section-title">
+    <span class="black-text">LAPS in</span>
+    <span class="primary-text">News</span>
+  </h2>
+
+  <div class="news-carousel" id="newsCarousel">
+
+    <!-- Blog Card 1 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Events</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Annual Day Celebration</h3>
+        <p class="news-excerpt">A glimpse of our grand annual function...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Admin</span>
+            <span class="news-date">15 Aug 2025 · Saturday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Achievements</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Top Rank in District</h3>
+        <p class="news-excerpt">Our students secured district level positions...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Principal</span>
+            <span class="news-date">10 Aug 2025 · Monday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Sports</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Inter-School Football</h3>
+        <p class="news-excerpt">Victory in the football championship...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Sports Dept.</span>
+            <span class="news-date">5 Aug 2025 · Wednesday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 4 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Academics</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Smart Classrooms Introduced</h3>
+        <p class="news-excerpt">We launched modern digital classrooms...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Teacher</span>
+            <span class="news-date">3 Aug 2025 · Sunday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 5 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Library</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">New Library Inauguration</h3>
+        <p class="news-excerpt">A modern library with digital access...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Librarian</span>
+            <span class="news-date">1 Aug 2025 · Friday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 6 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Science</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Science Exhibition 2025</h3>
+        <p class="news-excerpt">Students presented innovative projects...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Science Dept.</span>
+            <span class="news-date">28 Jul 2025 · Monday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 7 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Teachers</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Teachers Training Program</h3>
+        <p class="news-excerpt">Our teachers attended skill workshops...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Staff</span>
+            <span class="news-date">20 Jul 2025 · Sunday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 8 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Environment</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Tree Plantation Drive</h3>
+        <p class="news-excerpt">Students participated in green campaign...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Eco Club</span>
+            <span class="news-date">15 Jul 2025 · Tuesday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 9 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Competition</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Debate Competition</h3>
+        <p class="news-excerpt">Students showcased debating skills...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Author">
+          <div>
+            <span class="author-name">By English Dept.</span>
+            <span class="news-date">12 Jul 2025 · Saturday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 10 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Festivals</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Independence Day Prep</h3>
+        <p class="news-excerpt">Our school is gearing up for the celebration...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/80.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Cultural Club</span>
+            <span class="news-date">10 Jul 2025 · Thursday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 11 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Culture</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Music & Dance Fest</h3>
+        <p class="news-excerpt">Students performed cultural programs...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Arts Dept.</span>
+            <span class="news-date">5 Jul 2025 · Saturday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 12 -->
+    <div class="news-card">
+      <div class="news-img">
+        <img src="{% static 'imgs/lapsimg02.png'%}" alt="Blog Image">
+        <span class="category">Ceremony</span>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">Farewell 2025</h3>
+        <p class="news-excerpt">We bid farewell to our graduating batch...</p>
+        <div class="author-info">
+          <img src="https://randomuser.me/api/portraits/men/99.jpg" alt="Author">
+          <div>
+            <span class="author-name">By Alumni</span>
+            <span class="news-date">1 Jul 2025 · Tuesday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Scripts -->
+  <script src="{% static 'Components/facebookFeed.js'%}"></script>
+</body>
+</html>

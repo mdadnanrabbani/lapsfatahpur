@@ -1,0 +1,598 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Academics - Little Angels Public School</title>
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary: #1976D2;
+      --secondary: #FFC107;
+      --accent: #4CAF50;
+      --bg: #FFFFFF;
+      --text: #333333;
+
+      --card-radius: 16px;
+      --glass-alpha: 0.18;
+      --glass-blur: 12px;
+      --max-width: 1200px;
+    }
+
+
+    /* Basic reset */
+    *{box-sizing: border-box;margin:0;padding:0}
+    .page{
+      font-family: "Montserrat", sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:2.5rem 1rem;
+      display:block;
+      justify-content:center;
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    /* Header */
+    .header {
+      text-align:left;
+      margin-bottom:1.25rem;
+    }
+    .kicker {
+      display:inline-block;
+      font-size:0.9rem;
+      color:rgba(51,51,51,0.7);
+      margin-bottom:0.35rem;
+      font-weight:600;
+    }
+    .title {
+      font-size:2.4rem;
+      font-weight:700;
+      color:var(--text);
+      margin-bottom:0.35rem;
+      line-height:1.05;
+    }
+    /* last word primary */
+    .title .last { color:var(--primary); }
+
+    .subtitle {
+      color:rgba(51,51,51,0.75);
+      margin-bottom:1.6rem;
+      font-size:1rem;
+    }
+
+    /* Grid */
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:1.5rem;
+      align-items:start;
+    }
+
+    /* Card */
+    .card {
+      position:relative;
+      padding:1.6rem;
+      border-radius:var(--card-radius);
+      background: rgba(255,255,255,var(--glass-alpha));
+      backdrop-filter: blur(var(--glass-blur));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      overflow:hidden;
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+      min-height:160px;
+      display:flex;
+      flex-direction:column;
+      gap:0.8rem;
+    }
+
+    /* gradient accent overlay */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: -40% -40% auto auto;
+      width:260%;
+      height:260%;
+      background: linear-gradient(120deg, rgba(25,118,210,0.17), rgba(255,193,7,0.12), rgba(76,175,80,0.09));
+      transform: rotate(18deg);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .card h3{
+      font-size:1.15rem;
+      margin:0;
+      z-index:1;
+      font-weight:600;
+      color:var(--text);
+      display:flex;
+      gap:.4rem;
+      align-items:center;
+    }
+    .card h3 .tag {
+      display:inline-block;
+      font-weight:700;
+      color:var(--primary); /* highlight last word inside smaller titles if needed */
+    }
+
+    .card p.lead{
+      font-size:0.92rem;
+      margin:0;
+      color:rgba(51,51,51,0.8);
+      z-index:1;
+    }
+
+    .card .controls {
+      margin-top:auto;
+      display:flex;
+      gap:0.6rem;
+      z-index:1;
+    }
+
+    .btn {
+      border: none;
+      cursor:pointer;
+      padding:0.55rem 0.9rem;
+      border-radius:10px;
+      font-weight:600;
+      font-size:0.92rem;
+      transition: transform .18s, box-shadow .18s;
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+
+    .btn:active{ transform:translateY(1px) }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), rgba(25,118,210,0.95));
+      color:#fff;
+      box-shadow: 0 6px 14px rgba(25,118,210,0.16);
+    }
+
+    .btn-outline {
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(51,51,51,0.08);
+      box-shadow:none;
+    }
+
+    /* Subjects (collapsible) */
+    .subjects {
+      margin-top:0.85rem;
+      display:none;
+      z-index:1;
+      border-top:1px dashed rgba(51,51,51,0.06);
+      padding-top:0.9rem;
+    }
+
+    .subjects ul{
+      list-style:none;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem 0.75rem;
+    }
+    .subjects li{
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      padding:0.45rem 0.7rem;
+      border-radius:999px;
+      font-size:0.86rem;
+      color:var(--text);
+      backdrop-filter: blur(4px);
+      border:1px solid rgba(51,51,51,0.03);
+    }
+
+    /* Show class */
+    .card.show { transform: translateY(-8px); box-shadow:0 18px 36px rgba(0,0,0,0.10) }
+
+    /* small chevron */
+    .chev {
+      width:18px;height:18px;display:inline-block;transform:rotate(0);transition:transform .22s;
+    }
+    .chev.down { transform:rotate(180deg); }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px){
+      .grid{ grid-template-columns: repeat(3, 1fr) }
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: repeat(2, 1fr) }
+      .title{ font-size:2rem }
+    }
+    @media (max-width: 768px){
+      body{ padding:1.25rem }
+      .grid{ grid-template-columns: 1fr; gap:1rem }
+      .title{ font-size:1.6rem }
+      .subtitle{ font-size:0.95rem }
+      .card { padding:1.1rem; min-height:140px }
+      .btn { padding:0.45rem 0.7rem; font-size:0.88rem }
+    }
+
+    /* focus styles for accessibility */
+    .btn:focus { outline:3px solid rgba(25,118,210,0.12); outline-offset:2px; border-radius:8px }
+  </style>
+</head>
+<body>
+<div class="header">
+    {% include "Nav Bar/navbar01.html" %}
+</div>
+  <div class="page" role="main">
+    <header class="header" aria-label="Academics header">
+      <div class="kicker">Little Angels Public School · Fatahpur</div>
+      <h1 class="title">Our <span class="last">Academics</span></h1>  <!-- last word in primary -->
+      <div class="subtitle">From Play Class up to Class 8 — a balanced CBSE-based curriculum that builds strong fundamentals and inquisitive minds.</div>
+    </header>
+
+    <section class="grid" aria-live="polite">
+      <!-- Play, Nursery, Prep -->
+      <article class="card" data-level="Play">
+        <h3>Play <span class="tag">Class</span></h3>
+        <p class="lead">Early learning with play-based activities, social skills & motor development.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-play">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline" tabindex="0">Overview</button>
+        </div>
+
+        <div class="subjects" id="sub-play" aria-hidden="true">
+          <ul>
+            <li>Pre-literacy activities</li>
+            <li>Motor Play</li>
+            <li>Rhymes & Storytime</li>
+            <li>Creative Art</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Nursery">
+        <h3>Nursery <span class="tag">Class</span></h3>
+        <p class="lead">Introduction to letters, numbers, colors & social routines.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-nursery">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Overview</button>
+        </div>
+
+        <div class="subjects" id="sub-nursery" aria-hidden="true">
+          <ul>
+            <li>Emergent Literacy</li>
+            <li>Pre-Maths</li>
+            <li>Story & Rhymes</li>
+            <li>Art & Craft</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Prep">
+        <h3>Prep <span class="tag">Class</span></h3>
+        <p class="lead">Prepare learners for formal schooling: basics of reading, writing & numeracy.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-prep">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Overview</button>
+        </div>
+
+        <div class="subjects" id="sub-prep" aria-hidden="true">
+          <ul>
+            <li>Foundational English</li>
+            <li>Basic Maths</li>
+            <li>Environmental Awareness</li>
+            <li>Activity Based Learning</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Dynamic: Class 1 to Class 8 (CBSE subjects list) -->
+      <!-- Subjects list used for class 1-8 (adjust per class/grade in future if needed) -->
+      <!-- The subjects below follow your provided list (Science, English, English Grammar, Maths, Urdu, Hindi, Hindi grammar, Sanskrit, GK, GS, SST, Computer, Computer Lab, etc) -->
+      <article class="card" data-level="Class 1">
+        <h3>Class <span class="tag">1</span></h3>
+        <p class="lead">Balanced curriculum focusing on literacy, numeracy and foundational concepts.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-1">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-1" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Environmental Science (EVS)</li>
+            <li>Hindi / Urdu / Sanskrit (as applicable)</li>
+            <li>Computer Basics</li>
+            <li>Art & Craft</li>
+            <li>Physical Activity</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 2">
+        <h3>Class <span class="tag">2</span></h3>
+        <p class="lead">Strengthening basics, improving comprehension and arithmetic skills.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-2">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-2" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Environmental Studies</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer Basics</li>
+            <li>General Knowledge (GK)</li>
+            <li>Art & Craft</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 3">
+        <h3>Class <span class="tag">3</span></h3>
+        <p class="lead">Developing independent learning habits and conceptual clarity.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-3">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-3" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Studies (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>GK / Life Skills</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 4">
+        <h3>Class <span class="tag">4</span></h3>
+        <p class="lead">Broader concepts in science, maths & social studies; emphasis on language skills.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-4">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-4" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Studies (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>General Knowledge (GK)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 5">
+        <h3>Class <span class="tag">5</span></h3>
+        <p class="lead">Transition to upper primary with balanced academics and activities.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-5">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-5" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Science (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>Computer Lab</li>
+            <li>General Knowledge</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 6">
+        <h3>Class <span class="tag">6</span></h3>
+        <p class="lead">Upper primary — deeper dive into science, maths, languages & technology.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-6">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-6" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Science (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>Computer Lab</li>
+            <li>General Knowledge</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 7">
+        <h3>Class <span class="tag">7</span></h3>
+        <p class="lead">Focus on critical thinking, experiments and language proficiency.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-7">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-7" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Science (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>Computer Lab</li>
+            <li>General Knowledge</li>
+            <li>Health & Physical Education</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card" data-level="Class 8">
+        <h3>Class <span class="tag">8</span></h3>
+        <p class="lead">Preparing students for higher classes with well-rounded academics and labs.</p>
+
+        <div class="controls">
+          <button class="btn btn-primary js-toggle" aria-expanded="false" aria-controls="sub-8">
+            <span>View Subjects</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-outline">Syllabus</button>
+        </div>
+
+        <div class="subjects" id="sub-8" aria-hidden="true">
+          <ul>
+            <li>English</li>
+            <li>English Grammar</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>Social Science (SST)</li>
+            <li>Hindi / Urdu / Sanskrit</li>
+            <li>Computer</li>
+            <li>Computer Lab</li>
+            <li>General Knowledge (GK)</li>
+            <li>Health & Physical Education</li>
+            <li>Project Work / Activity</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    // Toggle subject lists
+    (function(){
+      const toggles = document.querySelectorAll('.js-toggle');
+      toggles.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const controls = btn.getAttribute('aria-controls');
+          const panel = document.getElementById(controls);
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          // toggle
+          btn.setAttribute('aria-expanded', String(!expanded));
+          if(!expanded){
+            // show
+            panel.style.display = 'block';
+            panel.setAttribute('aria-hidden', 'false');
+            // rotate chevron
+            const svg = btn.querySelector('.chev');
+            if(svg) svg.classList.add('down');
+          } else {
+            panel.style.display = 'none';
+            panel.setAttribute('aria-hidden', 'true');
+            const svg = btn.querySelector('.chev');
+            if(svg) svg.classList.remove('down');
+          }
+        });
+      });
+
+      // Simple reveal on scroll for cards
+      const cards = document.querySelectorAll('.card');
+      const reveal = () => {
+        const trigger = window.innerHeight * 0.86;
+        cards.forEach(c => {
+          const top = c.getBoundingClientRect().top;
+          if(top < trigger) c.classList.add('show');
+        });
+      };
+      window.addEventListener('scroll', reveal);
+      reveal();
+
+      // Accessibility: allow toggling with Enter/Space on focused button
+      document.querySelectorAll('.js-toggle').forEach(btn=>{
+        btn.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Enter' || ev.key === ' '){
+            ev.preventDefault();
+            btn.click();
+          }
+        });
+      });
+    })();
+  </script>
+
+<div class="footer">
+    {% include "Components/footer.html" %}
+</div>
+</body>
+</html>

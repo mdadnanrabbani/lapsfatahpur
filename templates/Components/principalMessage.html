@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'Components/principalMessage.css' %}">
+    <title>Principal Message</title>
+</head>
+<body>
+<section class="principal-message">
+    <div class="principal-photo">
+        <img src="{% static 'imgs/principalsir.png' %}" alt="Principal Photo">
+    </div>
+    <div class="principal-text">
+        <p>
+            I believe that education is not just about academic excellence but also about nurturing values, discipline, and a sense of responsibility in every student. At Little Angels Public School, we strive to provide a holistic learning environment that prepares our children to face the challenges of tomorrow with confidence and compassion.
+        </p>
+        <span class="highlight">This is why I’m proud to lead this institution.</span>
+        <div class="principal-name">Mr. Nanad Laal</div>
+        <div class="principal-designation">Principal, LAPS</div>
+    </div>
+</section>
+
+<script src="{% static 'Components/principalMessage.js' %}"></script>
+</body>
+</html>

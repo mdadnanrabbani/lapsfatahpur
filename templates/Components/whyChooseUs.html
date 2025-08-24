@@ -1,0 +1,79 @@
+{%load static%}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Why Choose Us</title>
+    <!-- Font Awesome CDN in <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'Components/whyChooseUs.css'%}">
+</head>
+<body>
+<section class="why-choose-us">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">
+  <span class="title-main">Why Choose</span> <span class="title-highlight">Us?</span>
+</h2>
+
+    <div class="content">
+      <div class="features">
+        <div class="feature-box" data-aos="fade-right" data-aos-delay="100">
+          <div class="icon" style="background-color: #4ECDC4;">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div class="text">
+            <h3>Experienced Teachers</h3>
+            <p>Our dedicated and qualified staff ensure that each student receives personalized attention for academic excellence.</p>
+          </div>
+        </div>
+        <div class="feature-box" data-aos="fade-right" data-aos-delay="200">
+          <div class="icon" style="background-color: #FF6B6B;">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="text">
+            <h3>Holistic Development</h3>
+            <p>We focus on academics, sports, arts, and personality development to prepare students for all-round success.</p>
+          </div>
+        </div>
+        <div class="feature-box" data-aos="fade-right" data-aos-delay="300">
+          <div class="icon" style="background-color: #FFD93D; color: #333;">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="text">
+            <h3>Proven Track Record</h3>
+            <p>Our school has consistently achieved top results in academics and extracurricular activities over the years.</p>
+          </div>
+        </div>
+        <div class="feature-box" data-aos="fade-right" data-aos-delay="400">
+          <div class="icon" style="background-color: #4ECDC4;">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="text">
+            <h3>Safe & Nurturing Environment</h3>
+            <p>We provide a secure and caring atmosphere where every child feels valued and motivated to learn.</p>
+          </div>
+        </div>
+      </div>
+      <div class="image-box" data-aos="fade-left" data-aos-delay="200">
+        <img src="{%static 'imgs/lapsimg02.png'%}" alt="Students in classroom">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Include AOS JS before </body> -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, // animation duration
+    once: true,    // animate only once when scrolling
+    offset: 100    // trigger distance from viewport
+  });
+</script>
+
+</body>
+</html>

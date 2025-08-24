@@ -1,0 +1,120 @@
+:root {
+  --primary: #1976D2;
+  --secondary: #FFC107;
+  --accent: #4CAF50;
+  --ink: #333333;
+  --white: #FFFFFF;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* Wrapper */
+.notice-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border: 1px solid rgba(25,118,210,0.2);
+}
+
+/* Header */
+.notice-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.notice-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.notice-header h1 span {
+  color: var(--primary);
+}
+.notice-header p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Form */
+.notice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--ink);
+}
+.form-group i {
+  color: var(--primary);
+  margin-right: 8px;
+}
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(25,118,210,0.3);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(25,118,210,0.25);
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.checkbox-group label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+/* Submit */
+.form-action {
+  text-align: center;
+}
+.form-action button {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.form-action button:hover {
+  background: var(--secondary);
+  color: var(--ink);
+  transform: translateY(-3px);
+}

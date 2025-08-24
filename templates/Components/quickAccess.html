@@ -1,0 +1,52 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quick Access</title>
+    <link rel="stylesheet" href="{% static 'Components/quickAccess.css'%}">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<section class="info-grid">
+  <div class="info-card circular">
+    <i class="fas fa-bullhorn"></i>
+    <h3>Circular</h3>
+  </div>
+  <div class="info-card blog">
+   <!-- <i class="fas fa-blog"></i> -->
+    <i class="fa-solid fa-blog" style="color: #ffffff;"></i>
+    <h3>Blog</h3>
+  </div>
+  <div class="info-card courses">
+    <i class="fas fa-book-open"></i>
+    <h3>Courses</h3>
+  </div>
+  <div class="info-card syllabus">
+    <i class="fas fa-file-alt"></i>
+    <h3>Syllabus</h3>
+  </div>
+  <div class="info-card payfee">
+    <i class="fas fa-credit-card"></i>
+    <h3>Pay Fee</h3>
+  </div>
+  <div class="info-card result">
+    <i class="fas fa-graduation-cap"></i>
+    <h3>See Result</h3>
+  </div>
+</section>
+
+<!-- FontAwesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script src="{% static 'Components/quickAccess.js'%}"> </script>
+
+
+</body>
+</html>

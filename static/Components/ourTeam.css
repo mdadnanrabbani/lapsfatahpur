@@ -1,0 +1,214 @@
+/* Variables */
+:root {
+  --primary: #1976D2;
+  --secondary: #FFC107;
+  --accent: #4CAF50;
+  --ink: #333333;
+  --white: #ffffff;
+  --font: 'Montserrat', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+/* Our Team Title (center aligned with underline center me) */
+.team-section .section-title {
+  text-align: center;
+  position: relative;
+}
+
+.team-section .section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--primary);
+  margin: 8px auto 0 auto; /* auto = center */
+  border-radius: 2px;
+}
+.section-title span {
+  color: var(--primary);
+}
+
+/* Our Team Grid */
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease;
+  border-bottom: 5px solid var(--accent);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+}
+
+.team-img img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 1rem;
+  border-bottom: 4px solid var(--primary);
+}
+
+.team-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.team-card p {
+  font-size: 1rem;
+  color: var(--ink);
+  opacity: 0.8;
+}
+
+/* --- Scroll Buttons --- */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 90%;
+  overflow: hidden;
+}
+
+.prev { left: 0.5rem; }  /* inside visible area */
+.next { right: 0.5rem; }
+
+.prev:hover, .next:hover {
+  background: var(--secondary);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 2rem;
+}
+
+.teacher-card {
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.teacher-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--primary);
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.teacher-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.teacher-card p {
+  font-size: 0.9rem;
+  color: var(--ink);
+  opacity: 0.8;
+}
+
+/* --- Scroll Buttons --- */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.prev:hover, .next:hover {
+  background: var(--secondary);
+}
+
+
+/* --- Teachers Section Background --- */
+.teachers-section {
+  background: linear-gradient(to top, #ffffff, #92C7FF78);
+  padding: 3rem 1rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- Teachers Section Title Fix --- */
+.teachers-section .section-title {
+  text-align: left !important;
+  margin-left: 2rem;
+  position: relative;
+}
+
+.teachers-section .section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--primary);
+  margin-top: 6px;
+  margin-left: 0;  /* underline start from left */
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .carousel-track {
+    gap: 1rem;
+  }
+  .teacher-card {
+    width: 150px;
+  }
+  .teacher-card img {
+    width: 100px;
+    height: 100px;
+  }
+}

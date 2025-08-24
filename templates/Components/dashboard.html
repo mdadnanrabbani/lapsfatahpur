@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | LAPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Components/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Dashboard Wrapper -->
+  <section class="dashboard-wrapper">
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+      <h1>Admin <span>Dashboard</span></h1>
+      <p>Welcome back! Manage everything in one place.</p>
+    </header>
+
+    <!-- Dashboard Container -->
+    <main class="dashboard-container">
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+        <h3>Write <span>Notice</span></h3>
+        <a href="/writenotice">Write & Publish</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
+        <h3>Write <span>Blog</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-book"></i></div>
+        <h3>Enter <span>Marks</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-poll"></i></div>
+        <h3>View <span>Result</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>School <span>Accounts</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-users"></i></div>
+        <h3>Manage <span>Teachers</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-user-graduate"></i></div>
+        <h3>Manage <span>Students</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-user-tie"></i></div>
+        <h3>Manage <span>Staff</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-calendar-alt"></i></div>
+        <h3>School <span>Events</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-chalkboard"></i></div>
+        <h3>Class <span>Schedule</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+        <h3>School <span>Security</span></h3>
+        <a href="#">Open</a>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon-box"><i class="fas fa-cogs"></i></div>
+        <h3>General <span>Settings</span></h3>
+        <a href="#">Open</a>
+      </div>
+    </main>
+  </section>
+
+</body>
+</html>

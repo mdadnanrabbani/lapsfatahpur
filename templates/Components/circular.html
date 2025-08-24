@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Circulars</title>
+  <link rel="stylesheet" href="{% static 'Components/circular.css' %}">
+</head>
+<body>
+
+<section class="circulars-section">
+  <h1 class="page-title">School <span>Circulars</span></h1>
+
+  <!-- Filters -->
+  <div class="filters">
+    <select id="filterTo">
+      <option value="">Filter by Audience</option>
+      <option value="Students">Students</option>
+      <option value="Teachers">Teachers</option>
+      <option value="Parents">Parents</option>
+    </select>
+
+    <input type="date" id="filterDate">
+
+    <button onclick="applyFilters()">Apply</button>
+    <button onclick="resetFilters()" class="reset-btn">Reset</button>
+  </div>
+
+  <!-- Notices Container -->
+  <div id="circularsContainer" class="circulars-container">
+    <!-- Cards load here dynamically -->
+  </div>
+</section>
+
+<script src="{% static 'Components/circular.js' %}"></script>
+</body>
+</html>

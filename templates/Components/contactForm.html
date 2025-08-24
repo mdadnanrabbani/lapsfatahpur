@@ -1,0 +1,67 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Components/contactForm.css' %}">
+    <title>Contact Form</title>
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+
+<section class="contact-section">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you! Please fill out the form below.</p>
+
+        <form class="contact-form" method="post" action="/contactus">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Your Message</label>
+                <textarea id="comment" name="comment" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if success %}
+<script>
+Swal.fire({
+    title: 'Message Sent!',
+    text: 'Thank you for contacting us.',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    confirmButtonColor: '#4ECDC4',
+}).then(() => {
+    window.location.href = "#"; // redirect after OK
+});
+</script>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+root{
+  --primary:#4ECDC4;
+  --secondary:#FF6B6B;
+  --accent:#FFD93D;
+  --ink:#333333;
+  --white:#FFFFFF;
+}
+
+/* Heading colors */
+.cf-campus {
+  color: #333333;
+}
+.cf-facilities {
+  color: var(--primary);
+}
+
+.cf-section{
+  font-family: "Montserrat", sans-serif;
+  background:#fff;
+  padding:64px 16px;
+}
+
+.cf-container{
+  max-width:1180px;
+  margin:auto;
+}
+
+.cf-title{
+  text-align:center;
+  font-weight:700;
+  font-size:clamp(24px,2.2vw + 8px,36px);
+  margin-bottom:24px;
+  color:var(--ink);
+}
+
+/* Video Hero */
+.cf-hero{
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+.cf-video{
+  position:relative;
+  height: clamp(260px, 50vw, 460px); /* Taller video */
+  background-size:cover;
+  background-position:center;
+  display:grid;
+  place-items:center;
+}
+
+.cf-tint{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,0.4),rgba(0,0,0,0.1));
+}
+
+.cf-play{
+  font-size:64px;
+  color:var(--white);
+  background:none;
+  border:none;
+  cursor:pointer;
+  z-index:2;
+  transition:transform .2s ease;
+}
+.cf-play:hover{transform:scale(1.1);}
+
+.cf-video-badge{
+  position:absolute;
+  top:16px;left:16px;
+  background:rgba(255,255,255,0.9);
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:600;
+  color:var(--ink);
+}
+
+/* Facilities Strip */
+.cf-strip-wrap{
+  position:relative;
+}
+
+.cf-strip{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:minmax(180px,1fr);
+  gap:16px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+}
+
+/* Facility card - Modern glassmorphism */
+.cf-card {
+  scroll-snap-align: start;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 24px 18px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient accent bar on top */
+.cf-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  background: var(--primary);
+}
+
+.cf-card:nth-child(2)::before { background: var(--secondary); }
+.cf-card:nth-child(3)::before { background: var(--accent); }
+.cf-card:nth-child(4)::before { background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.cf-card:nth-child(5)::before { background: linear-gradient(90deg, var(--secondary), var(--primary)); }
+.cf-card:nth-child(6)::before { background: linear-gradient(90deg, var(--accent), var(--secondary)); }
+.cf-card:nth-child(7)::before { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+
+/* Hover pop effect */
+.cf-card:hover{
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* Icons */
+.cf-icon {
+  font-size: 34px;
+  color: var(--primary);
+  margin-bottom: 10px;
+  transition: color .25s ease;
+}
+.cf-card:nth-child(2) .cf-icon { color: var(--secondary); }
+.cf-card:nth-child(3) .cf-icon { color: var(--accent); }
+
+
+
+/* Labels */
+.cf-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color .25s ease;
+}
+
+/* Hover states */
+.cf-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  border-color: rgba(255,255,255,0.5);
+}
+.cf-card:hover .cf-icon { color: var(--ink); }
+.cf-card:hover .cf-label { color: var(--ink); }
+
+.cf-fade{
+  position:absolute;top:0;bottom:0;width:40px;pointer-events:none;
+}
+.cf-fade--left{left:0;background:linear-gradient(90deg,#fff,transparent);}
+.cf-fade--right{right:0;background:linear-gradient(270deg,#fff,transparent);}
+
+@media(max-width:768px){
+  .cf-video{height:240px;}
+  .cf-strip{grid-auto-columns:minmax(150px,1fr);}
+}

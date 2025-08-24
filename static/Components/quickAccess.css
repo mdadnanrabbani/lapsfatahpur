@@ -1,0 +1,67 @@
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  margin: 0 50px; /* Right & Left margin */
+}
+
+.info-card {
+  position: relative;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 30px 15px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-card i {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.info-card h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+/* Gradient Overlay for each card */
+.circular { background: linear-gradient(135deg, #1976D2, rgba(25, 118, 210, 0.7)); }
+.blog { background: linear-gradient(135deg, #FFC107, rgba(255, 193, 7, 0.7)); }
+.courses { background: linear-gradient(135deg, #4CAF50, rgba(76, 175, 80, 0.7)); }
+.syllabus { background: linear-gradient(135deg, #FF5722, rgba(255, 87, 34, 0.7)); }
+.payfee { background: linear-gradient(135deg, #9C27B0, rgba(156, 39, 176, 0.7)); }
+.result { background: linear-gradient(135deg, #009688, rgba(0, 150, 136, 0.7)); }
+
+/* Hover Effect */
+.info-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Mobile View (≤768px) */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 0 15px; /* Mobile me side margin kam */
+  }
+
+  .info-card {
+    padding: 20px 10px;
+  }
+
+  .info-card i {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+  }
+}

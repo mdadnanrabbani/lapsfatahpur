@@ -1,0 +1,34 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'Components/slider01.css'%}">
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to <span>Little Angels Public School</span></h1>
+        <p>Empowering students with knowledge, skills, and values for a brighter tomorrow.</p>
+        <div class="hero-buttons">
+            <a href="#admissions" class="btn primary-btn">Admissions Open</a>
+            <a href="#about" class="btn secondary-btn">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        <img src="{% static 'imgs/img3.svg'%}" alt="School Building">
+    </div>
+</section>
+
+
+
+<script src="{% static 'Components/slider01.js'%}"></script>
+</body>
+</html>

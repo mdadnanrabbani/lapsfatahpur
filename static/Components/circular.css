@@ -1,0 +1,160 @@
+/* Color & typography setup */
+root {
+  --primary: #1976D2;
+  --secondary: #FFC107;
+  --accent: #4CAF50;
+  --bg: #FFFFFF;
+  --text: #333333;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+/* Section background - soft gradient for contrast */
+.circulars-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f9ff, #ffffff);
+  border-radius: 20px;
+}
+
+/* Title */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title span {
+  color: var(--primary);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters select,
+.filters input,
+.filters button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.filters button {
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.filters .reset-btn {
+  background: var(--accent);
+}
+
+.filters button:hover {
+  opacity: 0.9;
+}
+
+/* Container */
+.circulars-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card (Glassmorphism visible now) */
+.circular-card {
+  background: rgba(255, 255, 255, 0.25); /* semi transparent */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradient highlight effect on hover */
+.circular-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(240, 248, 255, 0.25)
+  );
+}
+
+/* Card heading */
+.circular-card h3 {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.circular-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.circular-card .meta {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+/* View Button */
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #4CAF50; /* darker shade of primary */
+  transform: translateY(-2px);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters select,
+  .filters input,
+  .filters button {
+    width: 100%;
+  }
+}

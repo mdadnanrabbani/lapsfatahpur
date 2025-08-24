@@ -1,0 +1,87 @@
+{%load static%}
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Campus Facilities Section -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'Components/facilities.css'%}">
+
+    <title>Facilities</title>
+
+</head>
+<body>
+
+<section id="campus-facilities" class="cf-section">
+  <div class="cf-container">
+
+    <h2 class="cf-title">
+  <span class="cf-campus">Campus</span> <span class="cf-facilities">Facilities</span>
+</h2>
+
+    <!-- Video Hero -->
+    <div class="cf-hero" aria-label="Campus Highlights Video">
+      <div class="cf-video" data-video-id="d_ebnGAYSCQ">
+        <button class="cf-play" aria-label="Play campus video">
+          <i class="ri-play-circle-fill"></i>
+        </button>
+        <div class="cf-tint"></div>
+        <div class="cf-video-badge">Campus Highlights</div>
+      </div>
+    </div>
+
+    <!-- Facilities Strip -->
+    <div class="cf-strip-wrap">
+      <div class="cf-strip" role="list">
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-wifi-fill"></i></div>
+          <div class="cf-label">Wi-Fi Campus</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-computer-fill"></i></div>
+          <div class="cf-label">Computer Lab</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-slideshow-2-fill"></i></div>
+          <div class="cf-label">Smart Class</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-camera-lens-fill"></i></div>
+          <div class="cf-label">CCTV Surveillance</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-football-fill"></i></div>
+          <div class="cf-label">Playground</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-star-smile-fill"></i></div>
+          <div class="cf-label">Co-curricular Activities</div>
+        </div>
+
+        <div class="cf-card" role="listitem">
+          <div class="cf-icon"><i class="ri-bus-fill"></i></div>
+          <div class="cf-label">Van Service</div>
+        </div>
+
+      </div>
+      <div class="cf-fade cf-fade--left" aria-hidden="true"></div>
+      <div class="cf-fade cf-fade--right" aria-hidden="true"></div>
+    </div>
+
+  </div>
+</section>
+<script src="{%static 'Components/facilities.js'%}"> </script>
+
+</body>
+</html>
