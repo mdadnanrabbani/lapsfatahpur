@@ -1,13 +1,184 @@
-<!doctype html>
+{% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admissions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - LAPS</title>
+  <link rel="stylesheet" href="{% static 'Components/admission.css' %}">
+  <style>
+    /* ====== Base Styles ====== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      color: #333;
+    }
+    h1, h2, h3 {
+      margin: 0 0 15px 0;
+      font-weight: 600;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* ====== Hero Section ====== */
+    .admission-hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("{% static 'images/admission-hero.jpg' %}") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .admission-hero h1 {
+      font-size: 2.5rem;
+    }
+    .admission-hero p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    /* ====== Info Section ====== */
+    .admission-info {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .info-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    .info-card h3 {
+      color: #0077cc;
+    }
+
+    /* ====== Admission Form ====== */
+    .admission-form-section {
+      background: white;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .admission-form-section h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0077cc;
+    }
+    form {
+      display: grid;
+      gap: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #0077cc;
+      box-shadow: 0 0 5px rgba(0,119,204,0.3);
+    }
+    button {
+      background: #0077cc;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+
+    /* ====== Responsive ====== */
+    @media(max-width: 768px) {
+      .admission-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <H1> This is Admission Page. <H1>
+
+  <!-- Hero -->
+  <section class="admission-hero">
+    <h1>Admissions Open</h1>
+    <p>Welcome to Little Angels Public School, Fatahpur. Join us for a bright future.</p>
+  </section>
+
+  <!-- Admission Info -->
+  <section class="admission-info">
+    <div class="info-card">
+      <h3>Eligibility</h3>
+      <p>Admissions are open from Play Group to Class 8, as per CBSE curriculum. Age criteria must be fulfilled at the time of admission.</p>
+    </div>
+    <div class="info-card">
+      <h3>Documents Required</h3>
+      <ul>
+        <li>Birth Certificate</li>
+        <li>Transfer Certificate (if applicable)</li>
+        <li>Passport-size Photographs</li>
+        <li>Previous Class Report Card</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>Admission Process</h3>
+      <p>Fill the online admission form below or visit our school campus. After submission, shortlisted candidates will be contacted for interaction and admission confirmation.</p>
+    </div>
+  </section>
+
+  <!-- Admission Form -->
+  <section class="admission-form-section">
+    <h2>Online Admission Form</h2>
+    <form id="admissionForm">
+      <input type="text" placeholder="Full Name of Student" required>
+      <input type="date" placeholder="Date of Birth" required>
+      <select required>
+        <option value="">Select Class</option>
+        <option>Play Group</option>
+        <option>Nursery</option>
+        <option>LKG</option>
+        <option>UKG</option>
+        <option>Class 1</option>
+        <option>Class 2</option>
+        <option>Class 3</option>
+        <option>Class 4</option>
+        <option>Class 5</option>
+        <option>Class 6</option>
+        <option>Class 7</option>
+        <option>Class 8</option>
+      </select>
+      <input type="text" placeholder="Father's Name" required>
+      <input type="text" placeholder="Mother's Name" required>
+      <input type="text" placeholder="Contact Number" required>
+      <textarea rows="4" placeholder="Address" required></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("admissionForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Your admission form has been submitted successfully. We will contact you soon.");
+      this.reset();
+    });
+  </script>
+
 </body>
 </html>
